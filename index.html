@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Espalhar Ícones</title>
+    <script src="CSInterface.js"></script>
+    <style>
+        body { 
+            background-color: #323232; color: #ffffff; font-family: Arial, sans-serif; 
+            padding: 15px; font-size: 13px;
+        }
+        .step-title { display: block; margin-top: 15px; margin-bottom: 8px; font-weight: bold; }
+        .step-title.first { margin-top: 0; }
+        
+        .control-group { margin-bottom: 12px; background: #252525; padding: 10px; border-radius: 5px; border: 1px solid #444; }
+        .control-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .control-row:last-child { margin-bottom: 0; }
+        
+        input[type="number"] { width: 60px; padding: 4px; background: #535353; color: white; border: 1px solid #222; border-radius: 3px; text-align: right; }
+        
+        button { 
+            background-color: #2196F3; color: white; border: none; padding: 10px; width: 100%; 
+            cursor: pointer; border-radius: 4px; font-weight: bold; margin-top: 10px;
+        }
+        button:hover { background-color: #1976D2; }
+        
+        .checkbox-container { display: flex; align-items: center; margin-top: 10px; cursor: pointer; }
+        .checkbox-container input { margin-right: 8px; }
+        
+        .warning { color: #FF9800; font-size: 11px; margin-top: 5px; display: block; }
+    </style>
+</head>
+<body>
+    <div class="step-title first">1. Selecione os ícones (Matrizes)</div>
+    
+    <div class="step-title">2. Ajustes de Espalhamento</div>
+    <div class="control-group">
+        <div class="control-row">
+            <label for="inpCount">Quantidade de Ícones:</label>
+            <input type="number" id="inpCount" value="80" min="1" max="500">
+        </div>
+        <div class="control-row" title="Distância mínima entre os ícones para evitar sobreposição">
+            <label for="inpMargin">Margem (Anti-Colisão):</label>
+            <input type="number" id="inpMargin" value="5" min="0" max="50">
+        </div>
+    </div>
+
+    <div class="step-title">3. Variação de Tamanho (%)</div>
+    <div class="control-group">
+        <div class="control-row">
+            <label for="inpScaleMin">Escala Mínima:</label>
+            <input type="number" id="inpScaleMin" value="50" min="10" max="200">
+        </div>
+        <div class="control-row">
+            <label for="inpScaleMax">Escala Máxima:</label>
+            <input type="number" id="inpScaleMax" value="120" min="10" max="300">
+        </div>
+    </div>
+
+    <label class="checkbox-container">
+        <input type="checkbox" id="chkRotate" checked> Rotação Aleatória (0º a 360º)
+    </label>
+    
+    <label class="checkbox-container" title="Desenha quadrados vermelhos ao redor dos ícones gerados">
+        <input type="checkbox" id="chkDebug"> Mostrar Caixas de Colisão (Debug)
+    </label>
+
+    <button id="btnScatter">✨ Espalhar na Prancheta</button>
+
+    <script src="main.js"></script>
+</body>
+</html>
